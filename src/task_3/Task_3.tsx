@@ -9,7 +9,6 @@ export const Task_3 = () => {
 
   return (
     <FixWithChildren>
-      <div>Lags when change value</div>
       <SlowComponent />
     </FixWithChildren>
   );
@@ -26,6 +25,7 @@ const FixWithChildren: FC<FixWithChildrenPropsType> = ({children}) => {
 
     return (
         <div>
+            <div>Lags when change value</div>
             <input type="text" value={value} onChange={onChange} />
             {children}
         </div>
