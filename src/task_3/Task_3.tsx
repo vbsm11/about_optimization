@@ -4,6 +4,7 @@ import {Input} from './Input/Input';
 
 
 //find the problem and fix it as part of composition optimization, memo, children
+// еще варианты решения - useEffect, useRef
 
 export const Task_3 = () => {
 
