@@ -1,4 +1,4 @@
-import {ChangeEvent, useState} from 'react';
+import {ChangeEvent, FC, useState} from 'react';
 import { SlowComponent } from './slowComponent/SlowComponent';
 import {Input} from './Input/Input';
 
@@ -8,10 +8,26 @@ import {Input} from './Input/Input';
 export const Task_3 = () => {
 
   return (
-    <div>
+    <FixWithChildren>
       <div>Lags when change value</div>
-      <Input/>
       <SlowComponent />
-    </div>
+    </FixWithChildren>
   );
 };
+
+type FixWithChildrenPropsType = {
+    children: React.ReactNode
+}
+
+const FixWithChildren: FC<FixWithChildrenPropsType> = ({children}) => {
+    const [value, setValue] = useState('');
+
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => setValue(event.currentTarget.value);
+
+    return (
+        <div>
+            <input type="text" value={value} onChange={onChange} />
+            {children}
+        </div>
+    )
+}
